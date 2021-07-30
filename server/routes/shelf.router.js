@@ -42,8 +42,18 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 /**
  * Delete an item if it's something the logged in user added
  */
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   // endpoint functionality
+  console.log(`What is being DELETED:`,req.params.id)
+  const deleteItemQuery = `DELETE from item WHERE id=$1;`;
+  pool.query(deleteItemQuery, [req.params.id])
+  .then (result => {
+    console.log(`Successfully DELETED from database`, result);
+    res.sendStatus(201);
+  }).catch(error => {
+    console.log(`Did not DELETE from database`, error);
+    res.sendStatus(500);
+  })
 });
 
 /**

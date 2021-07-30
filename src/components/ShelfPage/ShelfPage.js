@@ -11,6 +11,9 @@ function ShelfPage() {
     })
   }, []);
   
+  const handleDelete= (deleteItem) => {
+    dispatch({ type: 'DELETE_ITEM', payload: deleteItem })
+  }
   return (
     <div className="container">
       <h2>Shelf</h2>
@@ -20,6 +23,7 @@ function ShelfPage() {
           <ul key= {item.id}>
             <li> {item.description} </li>
             <img src={item.image_url} height= '100px' width= '100px' />
+            <button onClick={ () => handleDelete(item.id)}>Delete</button>
           </ul>
         );
       })}
@@ -28,3 +32,5 @@ function ShelfPage() {
 } 
 
 export default ShelfPage;
+
+{/* <button type='submit' onClick={() => addNewItem()}>Add Item</button> */}
