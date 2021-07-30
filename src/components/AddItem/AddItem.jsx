@@ -13,6 +13,8 @@ function AddItem () {
         description: newDescription,
         image_url: newImage,
       };
+
+      console.log(newItem);
       //Need dispatch to POST saga
       dispatch({ type: "ADD_ITEM", payload: newItem });
     }
@@ -22,7 +24,7 @@ function AddItem () {
         <form action="submit">
           <input
             type="text"
-            value={newItem}
+            value={newDescription}
             placeholder="Item Description"
             onChange={(evt) => setNewDescription(evt.target.value)}
             required/>
@@ -37,3 +39,5 @@ function AddItem () {
       </section>
     );
 }
+
+export default AddItem;

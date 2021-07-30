@@ -19,6 +19,7 @@ import ShelfPage from '../ShelfPage/ShelfPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import AddItem from '../AddItem/AddItem';
 
 import './App.css';
 
@@ -63,6 +64,7 @@ function App() {
             exact
             path="/shelf"
           >
+            <AddItem />
             <ShelfPage />
           </ProtectedRoute>
 
